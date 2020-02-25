@@ -1,20 +1,22 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <TreeView :value="treeData" draggable droppable></TreeView>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import TreeView from './components/TreeView';
+import { Tree } from "he-tree-vue";
 
 @Component({
   components: {
-    HelloWorld,
+    TreeView,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  treeData = [{text: 'node 1'}, {text: 'node 2', children: [{text: 'node 2-1'}]}]
+  private created() {
+  }
+}
 </script>
 
 <style>
